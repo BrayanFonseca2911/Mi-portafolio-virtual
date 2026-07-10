@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brayan Fonseca | Portafolio Virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- CANVAS DE PARTÍCULAS -->
+    <canvas id="particles"></canvas>
+
+    <!-- MATRIX RAIN BACKGROUND -->
+    <canvas id="matrix"></canvas>
+
+    <!-- SCANLINES -->
+    <div class="scanlines"></div>
+
+    <!-- CURSOR PERSONALIZADO -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- NAVEGACIÓN LATERAL -->
+    <nav class="side-nav">
+        <a href="#inicio" class="dot active" data-section="inicio"><span>01</span></a>
+        <a href="#sobre-mi" class="dot" data-section="sobre-mi"><span>02</span></a>
+        <a href="#habilidades" class="dot" data-section="habilidades"><span>03</span></a>
+        <a href="#proyectos" class="dot" data-section="proyectos"><span>04</span></a>
+        <a href="#terminal" class="dot" data-section="terminal"><span>05</span></a>
+        <a href="#contacto" class="dot" data-section="contacto"><span>06</span></a>
+    </nav>
+
+    <!-- NAVBAR SUPERIOR -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-bracket">[</span>
+            <span class="logo-text">BF</span>
+            <span class="logo-bracket">]</span>
+            <span class="logo-underscore">_</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#inicio"><span class="nav-num">01</span>Inicio</a></li>
+            <li><a href="#sobre-mi"><span class="nav-num">02</span>Sobre mí</a></li>
+            <li><a href="#habilidades"><span class="nav-num">03</span>Skills</a></li>
+            <li><a href="#proyectos"><span class="nav-num">04</span>Proyectos</a></li>
+            <li><a href="#terminal"><span class="nav-num">05</span>Terminal</a></li>
+            <li><a href="#contacto"><span class="nav-num">06</span>Contacto</a></li>
+        </ul>
+        <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-text">ONLINE</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                <span class="badge-text">DISPONIBLE PARA TRABAJAR</span>
+            </div>
+            <div class="hero-code-prefix">&gt;_</div>
+            <h1 class="hero-title">
+                <span class="line">Hola, soy</span>
+                <span class="name glitch" data-text="Brayan Fonseca">Brayan Fonseca</span>
+            </h1>
+            <h2 class="hero-subtitle">
+                <span class="typed-text"></span><span class="cursor-typing">█</span>
+            </h2>
+            <p class="hero-description">
+                Desarrollador junior enfocado en construir experiencias digitales 
+                <span class="highlight">rápidas</span>, 
+                <span class="highlight">escalables</span> y 
+                <span class="highlight">robustas</span>.
+            </p>
+            <div class="hero-cta">
+                <a href="#proyectos" class="btn btn-primary">
+                    <span class="btn-corner"></span>
+                    <i class="fas fa-terminal"></i>
+                    <span>Ver proyectos</span>
+                </a>
+                <a href="#contacto" class="btn btn-secondary">
+                    <span class="btn-corner"></span>
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Contactar</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">10+</span>
+                    <span class="stat-label">Proyectos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">1+</span>
+                    <span class="stat-label">Años codeando</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">∞</span>
+                    <span class="stat-label">Café</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="profile-container">
+                <div class="hex-border"></div>
+                <div class="hex-border hex-2"></div>
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
+                <img src="perfil.png" alt="Foto de perfil" class="profile-img">
+                <div class="floating-badge badge-1"><i class="fab fa-react"></i></div>
+                <div class="floating-badge badge-2"><i class="fab fa-js"></i></div>
+                <div class="floating-badge badge-3"><i class="fab fa-node-js"></i></div>
+                <div class="floating-badge badge-4"><i class="fab fa-git-alt"></i></div>
+                <div class="tech-label label-1">HTML5</div>
+                <div class="tech-label label-2">CSS3</div>
+                <div class="tech-label label-3">JS</div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="section" id="sobre-mi">
+        <div class="section-header">
+            <div class="section-number">01 //</div>
+            <h2 class="section-title">SOBRE <span class="neon-text">MÍ</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p class="about-lead">
+                    Desarrollador en evolución, construyendo el puente entre 
+                    <span class="neon-text">la lógica y el diseño</span>.
+                </p>
+                <p>
+                Especialista con la tecnologia y en el
+                desarrollo de software.
+                Domina varios lenguajes de programacion
+                como <strong>Python</strong>, <strong>HTML</strong>
+                , <strong>CSS</strong>, <strong>JavaScript</strong> y <strong>n8n</strong>. <br>
+                Busca oportunidades para poner en
+                practica los
+                conocimientos en proyectos desafiantes y
+                crecer
+                profesionalmente dentro del ámbito del
+                desarrollo de la
+                tecnologia y el desarrollo de sofware.
+                </p>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>UBICACIÓN</strong>
+                            <span>Floridablanca, </span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <strong>EXPERIENCIA</strong>
+                            <span>Junior · En formación</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>ESTUDIOS</strong>
+                            <span>Desarrollo Web</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-language"></i>
+                        <div>
+                            <strong>IDIOMAS</strong>
+                            <span>Español · Inglés</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual reveal">
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="code-title">~/about-me.js</span>
+                        <div class="code-actions">
+                            <i class="fas fa-minus"></i>
+                            <i class="fas fa-square"></i>
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                    <pre class="code-content"><code><span class="code-line"><span class="line-num">01</span> <span class="code-keyword">const</span> <span class="code-var">developer</span> = {</span>
+<span class="code-line"><span class="line-num">02</span>   <span class="code-key">nombre</span>: <span class="code-string">"Brayan Fonseca"</span>,</span>
+<span class="code-line"><span class="line-num">03</span>   <span class="code-key">rol</span>: <span class="code-string">"Junior Developer"</span>,</span>
+<span class="code-line"><span class="line-num">04</span>   <span class="code-key">pasiones</span>: [</span>
+<span class="code-line"><span class="line-num">05</span>     <span class="code-string">"código limpio"</span>,</span>
+<span class="code-line"><span class="line-num">06</span>     <span class="code-string">"Diseño"</span>,</span>
+<span class="code-line"><span class="line-num">07</span>     <span class="code-string">"aprender siempre"</span></span>
+<span class="code-line"><span class="line-num">08</span>   ],</span>
+<span class="code-line"><span class="line-num">09</span>   <span class="code-key">café</span>: <span class="code-bool">true</span>,</span>
+<span class="code-line"><span class="line-num">10</span>   <span class="code-key">disponible</span>: <span class="code-bool">true</span></span>
+<span class="code-line"><span class="line-num">11</span> };</span></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="section" id="habilidades">
+        <div class="section-header">
+            <div class="section-number">02 //</div>
+            <h2 class="section-title">TECH <span class="neon-text">STACK</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                <h3>HTML5</h3>
+                <p>Estructura semántica</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 90%"></div>
+                    <span class="skill-percent">90%</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                <h3>CSS3</h3>
+                <p>Diseños responsive</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 85%"></div>
+                    <span class="skill-percent">85%</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-js"></i></div>
+                <h3>JavaScript</h3>
+                <p>Lógica y ES6+</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 75%"></div>
+                    <span class="skill-percent">75%</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-react"></i></div>
+                <h3>n8n</h3>
+                <p>Flujos automatizados</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 94%"></div>
+                    <span class="skill-percent">94%</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                <h3>Python</h3>
+                <p>Estructura de Datos</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 60%"></div>
+                    <span class="skill-percent">60%</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3>mySQL</h3>
+                <p>Bases de datos</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 70%"></div>
+                    <span class="skill-percent">70%</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                <h3>Git</h3>
+                <p>Control de versiones</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 80%"></div>
+                    <span class="skill-percent">80%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+<section class="section" id="proyectos">
+    <div class="section-header">
+        <div class="section-number">03 //</div>
+        <h2 class="section-title"><span class="neon-text">Pro</span>YECTOS</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+        <article class="project-card reveal" data-tilt>
+            <div class="project-image">
+                <div class="project-scanline"></div>
+                <img src="project-3.png" alt="ShopFlow" class="project-img">
+                <div class="project-id">#001</div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Flujos</span>
+                <h3>Flujo Reportes</h3>
+                <p>Desarrollo de una pagina web donde el usuario puede hacer un
+                reporte de una emergencia en la ciudad o barrio. Utilizamos un
+                agente de IA que decide si el daño es critico, bajo, o puede ser un
+                posible spam. Tambien desarrollamos un chatbot por telegram
+                donde envia todos los reportes realizados en la pagina web y el
+                usuario tambien puede mirar los reportes que el ha hecho.</p>
+                <div class="project-tech">
+                    <span>n8n</span><span>JavaScript</span><span>Telegram</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt>
+            <div class="project-image">
+                <div class="project-scanline"></div>
+                <div class="project-overlay">
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                    <img src="project-1.png" alt="TaskMaster" class="project-img">
+                </div>
+                <img src="project-1.png" alt="TaskMaster" class="project-img">
+                <div class="project-id">#002</div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Optimizar</span>
+                <h3>CampusBuild</h3>
+                <p>Desarrollo una pagina web de actividades que optimiza los procesos
+                y mejoras de la coordinación de los equipos de trabajo.
+                CampusBuild, una aplicacion que propone desarrollar una
+                aplicación personalizada que le permita llevar el control de sus
+                proyectos en todas las etapas de construcción.</p>
+                <div class="project-tech">
+                    <span>JavaScript</span><span>HTML</span><span>CSS</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt>
+            <div class="project-image">
+                <div class="project-scanline"></div>
+                <img src="project-2.png" alt="WeatherNow" class="project-img">
+                <div class="project-id">#003</div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Orden</span>
+                <h3>Music Stream</h3>
+                <p>Pagina web diseñada parecida a Spotify donde los usuarios pueden reproducir música y crear listas de reproducción. Tambien hay paquetes de musica premium donde puede escuchar musica sin anuncios.</p>
+                <div class="project-tech">
+                    <span>HTML</span><span>CSS</span>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+    <!-- TERMINAL INTERACTIVA -->
+    <section class="section" id="terminal">
+        <div class="section-header">
+            <div class="section-number">04 //</div>
+            <h2 class="section-title">TERMI<span class="neon-text">NAL</span></h2>
+            <div class="section-line"></div>
+            <p class="section-subtitle">Escribe <code>help</code> para ver los comandos disponibles</p>
+        </div>
+        <div class="terminal reveal">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot-close"></span>
+                    <span class="dot-min"></span>
+                    <span class="dot-max"></span>
+                </div>
+                <span class="terminal-title">visitor@portfolio:~ — bash — 80x24</span>
+                <div class="terminal-status">
+                    <span class="status-dot"></span>
+                    <span>ACTIVE</span>
+                </div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-line">
+                    <span class="prompt">visitor@portfolio:~$</span>
+                    <span class="command">welcome</span>
+                </div>
+                <div class="terminal-output">
+                    <span class="term-accent">╔══════════════════════════════════════╗</span><br>
+                    <span class="term-accent">║</span> 👋 ¡Bienvenido a mi terminal! <span class="term-accent">        ║</span><br>
+                    <span class="term-accent">║</span> Escribe <span class="cmd-highlight">help</span> para comenzar <span class="term-accent">       ║</span><br>
+                    <span class="term-accent">╚══════════════════════════════════════╝</span>
+                </div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">visitor@portfolio:~$</span>
+                <input type="text" id="terminalInput" autocomplete="off" spellcheck="false" placeholder="Escribe un comando...">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+        <div class="section-header">
+            <div class="section-number">05 //</div>
+            <h2 class="section-title">CON<span class="neon-text">TAC</span>TO</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>¿Listo para <span class="neon-text">construir</span> algo?</h3>
+                <p>Abierto a oportunidades, colaboraciones o simplemente charlar sobre tecnología.</p>
+                
+                <div class="contact-methods">
+                    <a href="https://mail.google.com" class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text">
+                            <strong>EMAIL</strong>
+                            <span>12brayanstiven@gmail.com</span>
+                        </div>
+                        <i class="fas fa-arrow-right contact-arrow"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/brayan-fonseca-2a63803aa/" target="_blank" class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="contact-text">
+                            <strong>LINKEDIN</strong>
+                            <span>linkedin</span>
+                        </div>
+                        <i class="fas fa-arrow-right contact-arrow"></i>
+                    </a>
+                    <a href="https://github.com/BrayanFonseca2911" target="_blank" class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-github"></i></div>
+                        <div class="contact-text">
+                            <strong>GitHub</strong>
+                            <span>BrayanFonseca2911</span>
+                        </div>
+                        <i class="fas fa-arrow-right contact-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <form class="contact-form reveal" id="contactForm">
+                <div class="form-header">
+                    <span class="form-icon"><i class="fas fa-terminal"></i></span>
+                    <span>./enviar-mensaje.sh</span>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">&gt; nombre</label>
+                    <input type="text" id="nombre" required>
+                    <span class="form-line"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">&gt; email</label>
+                    <input type="email" id="email" required>
+                    <span class="form-line"></span>
+                </div>
+                <div class="form-group">
+                    <label for="asunto">&gt; asunto</label>
+                    <input type="text" id="asunto" required>
+                    <span class="form-line"></span>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">&gt; mensaje</label>
+                    <textarea id="mensaje" rows="4" required></textarea>
+                    <span class="form-line"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="btn-corner"></span>
+                    <i class="fas fa-paper-plane"></i>
+                    <span>./ejecutar envío</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-ascii">
+                <pre>
+ ╔═══════════════════════════════════════╗
+ ║   DESIGNED & BUILT WITH PASSION       ║
+ ╚═══════════════════════════════════════╝
+                </pre>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/BrayanFonseca2911" target="_blank" class="contact-card">
+                    <div <i class="fab fa-github"></i></div>
+                <a href="https://www.linkedin.com/in/brayan-fonseca-2a63803aa/" target="_blank" class="contact-card">
+                    <div <i class="fab fa-linkedin-in"></i></div>
+            </div>
+            <p class="footer-text">
+                <span class="neon-text">&lt;</span> Hecho con <span class="heart">❤</span> por <strong>Brayan Fonseca</strong> <span class="neon-text">/&gt;</span>
+            </p>
+            <p class="footer-copy">© 2026 · ALL SYSTEMS OPERATIONAL</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
