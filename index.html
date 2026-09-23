@@ -9,6 +9,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+
+     <!-- ============================================================
+         ⚙️ CONFIGURACIÓN RÁPIDA — EDITA AQUÍ TU MISIÓN, VISIÓN Y CV
+         (No hace falta tocar nada más del HTML)
+         ============================================================ -->
+    <script>
+        window.MI_PORTAFOLIO = {
+            // ✏️ 1. TU MISIÓN (escríbela entre las comillas)
+            mision: "Poner en práctica mis conocimientos en desarrollo de software, creando soluciones tecnológicas útiles, innovadoras y de impacto real que aporten valor a los usuarios y me permitan seguir creciendo profesionalmente.",
+
+            // ✏️ 2. TU VISIÓN (escríbela entre las comillas)
+            vision: "Convertirme en un desarrollador de software integral y reconocido por mi capacidad de resolver problemas con tecnología, liderando proyectos que transformen ideas en productos digitales reales.",
+
+            // ✏️ 3. TU HOJA DE VIDA: escribe la ruta o el enlace de tu PDF.
+            //    Ejemplos válidos:
+            //      "cv/Brayan_Fonseca_CV.pdf"   -> si subes el PDF a una carpeta llamada 'cv'
+            //      "https://drive.google.com/..." -> si usas un enlace externo (Drive, etc.)
+            hojaDeVida: "cv/Brayan_Fonseca_CV.pdf"
+        };
+    </script>
 </head>
 <body>
 
@@ -180,8 +200,8 @@
                     <div class="info-card">
                         <i class="fas fa-graduation-cap"></i>
                         <div>
-                            <strong>ESTUDIOS</strong>
-                            <span>Desarrollo Web</span>
+                            <strong>ESTUDIO ACTUAL</strong>
+                            <span>Técnico Laboral en Desarrollo de Software</span>
                         </div>
                     </div>
                     <div class="info-card">
@@ -193,6 +213,67 @@
                     </div>
                 </div>
             </div>
+            <!-- ===== MISIÓN Y VISIÓN ===== -->
+                <div class="mision-vision">
+                    <div class="mv-card reveal">
+                        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+                        <h4><span class="mv-tag">MISIÓN //</span></h4>
+                        <p id="texto-mision"><!-- ✏️ Se edita en window.MI_PORTAFOLIO.mision (en el <head>) --></p>
+                    </div>
+                    <div class="mv-card reveal">
+                        <div class="mv-icon mv-icon-2"><i class="fas fa-eye"></i></div>
+                        <h4><span class="mv-tag mv-tag-2">VISIÓN //</span></h4>
+                        <p id="texto-vision"><!-- ✏️ Se edita en window.MI_PORTAFOLIO.vision (en el <head>) --></p>
+                    </div>
+                </div>
+
+                <!-- ===== FORMACIÓN ACADÉMICA ===== -->
+                <div class="formacion reveal">
+                    <h4 class="formacion-title"><span class="neon-text">&gt;_</span> FORMACIÓN ACADÉMICA</h4>
+                    <div class="timeline">
+                        <div class="timeline-item timeline-activo">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-fecha">2025 — Actualidad</span>
+                                <h5>Técnico Laboral en Desarrollo de Software</h5>
+                                <p>Programación, bases de datos, desarrollo web y automatización de procesos.</p>
+                                <span class="timeline-badge">EN CURSO</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-fecha">2024 — 2025</span>
+                                <h5>Técnico en Sistemas Teleinformáticos</h5>
+                                <p>Redes, soporte técnico e infraestructura de sistemas.</p>
+                                <span class="timeline-badge timeline-badge-done">FINALIZADO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== HOJA DE VIDA ===== -->
+                <div class="cv-banner reveal" id="cvBanner">
+                    <div class="cv-info">
+                        <div class="cv-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div>
+                            <strong>HOJA DE VIDA / CV</strong>
+                            <span>Perfil profesional completo, experiencia y formación</span>
+                        </div>
+                    </div>
+                    <div class="cv-actions">
+                        <button type="button" class="btn btn-primary cv-btn" id="btnVerCV">
+                            <span class="btn-corner"></span>
+                            <i class="fas fa-eye"></i>
+                            <span>Ver hoja de vida</span>
+                        </button>
+                        <a href="#" class="cv-download" id="btnDescargarCV" download>
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <div class="about-visual reveal">
                 <div class="code-window">
                     <div class="code-header">
@@ -502,6 +583,7 @@
             <div class="footer-social">
                 <a href="https://github.com/BrayanFonseca2911" target="_blank" class="contact-card">
                     <div <i class="fab fa-github"></i></div>
+                </a>
                 <a href="https://www.linkedin.com/in/brayan-fonseca-2a63803aa/" target="_blank" class="contact-card">
                     <div <i class="fab fa-linkedin-in"></i></div>
             </div>
@@ -511,6 +593,20 @@
             <p class="footer-copy">© 2026 · ALL SYSTEMS OPERATIONAL</p>
         </div>
     </footer>
+
+    <!-- MODAL HOJA DE VIDA (se abre con un clic en "Ver hoja de vida") -->
+    <div class="cv-modal" id="cvModal" aria-hidden="true">
+        <div class="cv-modal-backdrop" id="cvModalBackdrop"></div>
+        <div class="cv-modal-content">
+            <div class="cv-modal-header">
+                <span class="cv-modal-title"><i class="fas fa-file-pdf"></i> HOJA DE VIDA — Brayan Fonseca</span>
+                <button type="button" class="cv-modal-close" id="cvModalClose" aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <iframe id="cvFrame" title="Hoja de vida" src="about:blank"></iframe>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -480,3 +480,56 @@ window.addEventListener('resize', () => {
     columns = Math.floor(matrixCanvas.width / fontSize);
     drops = Array(columns).fill(1);
 });
+
+// ============================================
+// MISIÓN, VISIÓN Y HOJA DE VIDA (nuevo)
+// Lee los datos de window.MI_PORTAFOLIO definido
+// en el <head> de index.html
+// ============================================
+(function () {
+    const cfg = window.MI_PORTAFOLIO || {};
+
+    // 1. Inyectar Misión y Visión escritas "a mano" en la config
+    const misionEl = document.getElementById('texto-mision');
+    const visionEl = document.getElementById('texto-vision');
+    if (misionEl && cfg.mision) misionEl.textContent = cfg.mision;
+    if (visionEl && cfg.vision) visionEl.textContent = cfg.vision;
+
+    // 2. Lógica del CV: abrir modal con UN CLICK + enlace de descarga
+    const cvUrl = cfg.hojaDeVida || '';
+    const btnVerCV = document.getElementById('btnVerCV');
+    const btnDescargar = document.getElementById('btnDescargarCV');
+    const cvModal = document.getElementById('cvModal');
+    const cvFrame = document.getElementById('cvFrame');
+    const cvCerrar = document.getElementById('cvModalClose');
+    const cvBackdrop = document.getElementById('cvModalBackdrop');
+
+    if (btnDescargar && cvUrl) btnDescargar.href = cvUrl;
+
+    function abrirCV() {
+        if (!cvModal || !cvFrame) return;
+        if (!cvUrl) {
+            alert('Aún no has agregado tu hoja de vida. Edita "hojaDeVida" en window.MI_PORTAFOLIO dentro del <head> de index.html y coloca la ruta de tu PDF (ej: "cv/mi_cv.pdf") o un enlace (ej: Google Drive).');
+            return;
+        }
+        cvFrame.src = cvUrl;      // el navegador muestra el PDF dentro del modal
+        cvModal.classList.add('open');
+        cvModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarCV() {
+        if (!cvModal) return;
+        cvModal.classList.remove('open');
+        cvModal.setAttribute('aria-hidden', 'true');
+        cvFrame.src = 'about:blank';
+        document.body.style.overflow = '';
+    }
+
+    if (btnVerCV) btnVerCV.addEventListener('click', abrirCV);
+    if (cvCerrar) cvCerrar.addEventListener('click', cerrarCV);
+    if (cvBackdrop) cvBackdrop.addEventListener('click', cerrarCV);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cvModal && cvModal.classList.contains('open')) cerrarCV();
+    });
+})();
