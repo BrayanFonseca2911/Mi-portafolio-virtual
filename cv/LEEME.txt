@@ -1,0 +1,5 @@
+AQUÍ VA TU HOJA DE VIDA EN PDF
+==============================
+1. Guarda tu CV en esta carpeta con el nombre: Brayan_Fonseca_CV.pdf
+2. Si le pones otro nombre, actualiza la ruta en index.html (busca "hojaDeVida" en el <head>).
+También puedes usar un enlace externo (Google Drive, etc.) en esa misma variable.

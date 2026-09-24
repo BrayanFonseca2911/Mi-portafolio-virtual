@@ -8,7 +8,7 @@ const MI_DATA = {
     email: "12brayanstiven@gmail.com",
     linkedin: "https://www.linkedin.com/in/brayan-fonseca-2a63803aa/",
     github: "https://github.com/BrayanFonseca2911",
-    telefono: "+57 300 123 4567",
+    telefono: "+57 3156813345",
     añosExp: "1+",
 
     proyectos: [
@@ -496,7 +496,20 @@ window.addEventListener('resize', () => {
     if (visionEl && cfg.vision) visionEl.textContent = cfg.vision;
 
     // 2. Lógica del CV: abrir modal con UN CLICK + enlace de descarga
-    const cvUrl = cfg.hojaDeVida || '';
+    const cvRaw = (cfg.hojaDeVida || '').trim();
+
+    // Convierte enlaces de Google Drive ("...") en un enlace embebible ("/preview").
+    // Así basta pegar el link normal de "Compartir" y funciona sin tocar nada más.
+    function urlEmbedDrive(u) {
+        const m = u.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+        if (m) return 'https://drive.google.com/file/d/1-Ck_M5kFOo9oDXwlB13-s18-XG8IzC85/view?usp=sharing' + m[1] + '/preview';
+        const s = u.match(/drive\.google\.com\/open\?id=([^&]+)/);
+        if (s) return 'https://drive.google.com/file/d/1-Ck_M5kFOo9oDXwlB13-s18-XG8IzC85/view?usp=sharing' + s[1] + '/preview';
+        return u;
+    }
+
+    const esExterno = /^https?:\/\//i.test(cvRaw);
+    const cvUrl = esExterno ? urlEmbedDrive(cvRaw) : cvRaw;
     const btnVerCV = document.getElementById('btnVerCV');
     const btnDescargar = document.getElementById('btnDescargarCV');
     const cvModal = document.getElementById('cvModal');
@@ -509,7 +522,13 @@ window.addEventListener('resize', () => {
     function abrirCV() {
         if (!cvModal || !cvFrame) return;
         if (!cvUrl) {
-            alert('Aún no has agregado tu hoja de vida. Edita "hojaDeVida" en window.MI_PORTAFOLIO dentro del <head> de index.html y coloca la ruta de tu PDF (ej: "cv/mi_cv.pdf") o un enlace (ej: Google Drive).');
+            alert('Aún no has agregado tu hoja de vida. Edita "hojaDeVida" en window.MI_PORTAFOLIO dentro del <head> de index.html y coloca la ruta de tu PDF (ej: "cv/mi_cv.pdf\") o un enlace (ej: Google Drive).');
+            return;
+        }
+        if (esExterno && cvUrl.includes('drive.google.com')) {
+            // Los enlaces de Drive a veces son bloqueados dentro de un iframe
+            // (X-Frame-Options), así que abrimos el visor en una pestaña nueva.
+            window.open(cvUrl, '_blank', 'noopener');
             return;
         }
         cvFrame.src = cvUrl;      // el navegador muestra el PDF dentro del modal

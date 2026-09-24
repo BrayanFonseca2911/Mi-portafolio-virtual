@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 
-     <!-- ============================================================
+        <!-- ============================================================
          ⚙️ CONFIGURACIÓN RÁPIDA — EDITA AQUÍ TU MISIÓN, VISIÓN Y CV
          (No hace falta tocar nada más del HTML)
          ============================================================ -->
@@ -25,7 +25,10 @@
             // ✏️ 3. TU HOJA DE VIDA: escribe la ruta o el enlace de tu PDF.
             //    Ejemplos válidos:
             //      "cv/Brayan_Fonseca_CV.pdf"   -> si subes el PDF a una carpeta llamada 'cv'
-            //      "https://drive.google.com/..." -> si usas un enlace externo (Drive, etc.)
+            //      "https://drive.google.com/file/d/XXXX/view?usp=sharing"
+            //                                   -> pega aquí el enlace de Drive (Clic derecho
+            //                                       sobre el archivo > Compartir > Copiar enlace).
+            //                                       El código lo convierte solo al formato embebible.
             hojaDeVida: "cv/Brayan_Fonseca_CV.pdf"
         };
     </script>
@@ -173,7 +176,7 @@
                 desarrollo de software.
                 Domina varios lenguajes de programacion
                 como <strong>Python</strong>, <strong>HTML</strong>
-                , <strong>CSS</strong>, <strong>JavaScript</strong> y <strong>n8n</strong>. <br>
+                , <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>Java</strong> y tambien automatizaciones en <strong>n8n</strong>, Bases de Datos como <strong>mySQL</strong>, <strong>postgreSQL</strong> <br>
                 Busca oportunidades para poner en
                 practica los
                 conocimientos en proyectos desafiantes y
@@ -381,6 +384,16 @@
                     <span class="skill-percent">80%</span>
                 </div>
             </div>
+            <div class="skill-card reveal" data-tilt>
+                <div class="skill-corner"></div>
+                <div class="skill-icon"><i class="fab fa-java"></i></div>
+                <h3>Java</h3>
+                <p>Programación orientada a objetos</p>
+                <div class="skill-level">
+                    <div class="skill-fill" style="--level: 74%"></div>
+                    <span class="skill-percent">74%</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -399,8 +412,8 @@
                 <div class="project-id">#001</div>
             </div>
             <div class="project-content">
-                <span class="project-category">Flujos</span>
-                <h3>Flujo Reportes</h3>
+                <span class="project-category">Bases de Datos</span>
+                <h3>mySQL</h3>
                 <p>Desarrollo de una pagina web donde el usuario puede hacer un
                 reporte de una emergencia en la ciudad o barrio. Utilizamos un
                 agente de IA que decide si el daño es critico, bajo, o puede ser un
