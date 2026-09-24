@@ -502,14 +502,23 @@ window.addEventListener('resize', () => {
     // Así basta pegar el link normal de "Compartir" y funciona sin tocar nada más.
     function urlEmbedDrive(u) {
         const m = u.match(/drive\.google\.com\/file\/d\/([^/]+)/);
-        if (m) return 'https://drive.google.com/file/d/1-Ck_M5kFOo9oDXwlB13-s18-XG8IzC85/view?usp=sharing' + m[1] + '/preview';
+        if (m) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
         const s = u.match(/drive\.google\.com\/open\?id=([^&]+)/);
-        if (s) return 'https://drive.google.com/file/d/1-Ck_M5kFOo9oDXwlB13-s18-XG8IzC85/view?usp=sharing' + s[1] + '/preview';
+        if (s) return 'https://drive.google.com/file/d/' + s[1] + '/preview';
         return u;
     }
 
+    // Enlace de DESCARGA directa de Drive (para que "Descargar" funcione con links de Drive).
+    function urlDescargaDrive(u) {
+        const m = u.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+        if (m) return 'https://drive.google.com/uc?export=download&id=' + m[1];
+        const s = u.match(/drive\.google\.com\/open\?id=([^&]+)/);
+        if (s) return 'https://drive.google.com/uc?export=download&id=' + s[1];
+        return u;
+    }
     const esExterno = /^https?:\/\//i.test(cvRaw);
     const cvUrl = esExterno ? urlEmbedDrive(cvRaw) : cvRaw;
+    const cvDownloadUrl = esExterno && cvRaw.includes('drive.google.com') ? urlDescargaDrive(cvRaw) : cvRaw;
     const btnVerCV = document.getElementById('btnVerCV');
     const btnDescargar = document.getElementById('btnDescargarCV');
     const cvModal = document.getElementById('cvModal');
@@ -517,7 +526,7 @@ window.addEventListener('resize', () => {
     const cvCerrar = document.getElementById('cvModalClose');
     const cvBackdrop = document.getElementById('cvModalBackdrop');
 
-    if (btnDescargar && cvUrl) btnDescargar.href = cvUrl;
+    if (btnDescargar && cvDownloadUrl) btnDescargar.href = cvDownloadUrl;
 
     function abrirCV() {
         if (!cvModal || !cvFrame) return;
@@ -550,5 +559,20 @@ window.addEventListener('resize', () => {
     if (cvBackdrop) cvBackdrop.addEventListener('click', cerrarCV);
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && cvModal && cvModal.classList.contains('open')) cerrarCV();
+    });
+        // 3. Botón de GitHub en cada proyecto: toma el enlace de window.MI_PORTAFOLIO.githubProyectos
+    //    (configurado en el <head> de index.html) y lo asigna al botón correspondiente.
+    const linksGithub = cfg.githubProyectos || {};
+    document.querySelectorAll('.project-github').forEach(btn => {
+        const id = btn.dataset.proyecto;
+        const url = (linksGithub[id] || '').trim();
+        if (url && url !== '#') {
+            btn.href = url;                              // abre el repo en pestaña nueva
+        } else {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Aún no has configurado el enlace de GitHub de este proyecto.\n\nEdita "githubProyectos" en window.MI_PORTAFOLIO dentro del <head> de index.html y pega la URL del repositorio para "' + id + '".');
+            });
+        }
     });
 })();
